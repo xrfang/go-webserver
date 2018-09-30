@@ -1,5 +1,9 @@
 package main
 
-func setupRoutes() {
+import (
+	"net/http"
+)
 
+func setupRoutes() {
+	http.HandleFunc("/", home)
 }
