@@ -1,5 +1,7 @@
 bin/*
-github.com
 log/*
-pkg/*
+src/version.go
+src/*/errors.go
+utils/pack
 webroot/*
+.vscode/*

@@ -10,6 +10,7 @@ import (
 
 type Configuration struct {
 	LogFile string
+	DbgMode bool
 	Port    string
 	WebRoot string
 	//TODO: define configuration items
@@ -37,7 +38,7 @@ func (c *Configuration) Load(fn string) {
 
 var cf Configuration
 
-func loadConfig() {
+func loadConfig(cfgFile string) {
 	cf.binPath = path.Dir(os.Args[0])
 	cf.Port = "8080"
 	cf.WebRoot = "../webroot"

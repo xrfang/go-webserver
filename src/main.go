@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
+	"path/filepath"
 	"time"
 
 	audit "github.com/xrfang/go-audit"
@@ -11,21 +13,26 @@ import (
 )
 
 func main() {
+	conf := flag.String("conf", "", "configuration file")
 	ver := flag.Bool("version", false, "show version info")
-	pkg := flag.String("pack", "", "pack resources under directory")
-	dbg := flag.Bool("debug", false, "debug mode")
+	init := flag.Bool("init", false, "initialize configuration")
+	flag.Usage = func() {
+		fmt.Printf("WebServer - Go WebServer Template %s\n", verinfo())
+		fmt.Printf("\nUSAGE: %s OPTIONS\n", filepath.Base(os.Args[0]))
+		fmt.Println("\nOPTIONS")
+		flag.PrintDefaults()
+	}
 	flag.Parse()
 	if *ver {
 		fmt.Println(verinfo())
 		return
 	}
-	if *pkg != "" {
-		audit.Assert(res.Pack(*pkg))
-		fmt.Printf("resources under '%s' packed.\n", *pkg)
+	if *init {
+		fmt.Println("TODO: initialize configuration")
 		return
 	}
-	loadConfig()
-	if !*dbg {
+	loadConfig(*conf)
+	if !cf.DbgMode {
 		audit.Assert(res.Extract(cf.WebRoot, res.OverwriteIfNewer))
 	}
 	audit.ExpVars(map[string]interface{}{
@@ -34,7 +41,7 @@ func main() {
 	})
 	audit.SetLogFile(cf.LogFile)
 	audit.ExpLogs()
-	audit.SetDebugging(*dbg)
+	audit.SetDebugging(cf.DbgMode)
 	setupRoutes()
 	svr := http.Server{
 		Addr:         ":" + cf.Port,

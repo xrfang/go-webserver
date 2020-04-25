@@ -1,0 +1,4 @@
+github.com/xrfang/go-audit v0.0.0-20180819015324-ddbd82cecb49 h1:ChfThMkBBPHV9om2/IFQ/qb2Z45E9w1gwDZ2qAFTIoM=
+github.com/xrfang/go-audit v0.0.0-20180819015324-ddbd82cecb49/go.mod h1:K2etOumJGvKeVUPJnKabGjGOFm2EXnmEJF+Nme/6T4o=
+github.com/xrfang/go-res v1.3.0 h1:YuKceLxLqdZJW0yduvfCVl2BipCwJLmNf31rgMY/54I=
+github.com/xrfang/go-res v1.3.0/go.mod h1:85w8GsrLRxitQHpkLCfVRBnlOSsPGerGgCKH4yr7HgQ=
